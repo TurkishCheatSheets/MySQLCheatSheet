@@ -25,7 +25,7 @@ Aşağıdaki komut aracılığı ile oluşturulan veritabanı içerisinde istedi
 
 Aşağıdaki komutu kullanarak veritabanı içerisinde tablo oluşturabilirsiniz.
 
-``` CREATE TABLE [tabloadı] [tanımlama];```
+``` CREATE TABLE [tabloadı] ([kolon] VARCHAR(120), [birsonrakikolon] DATETIME);```
 
 ###Tabloları Gösterme
 
@@ -39,8 +39,98 @@ Veritabanı içerisindeki tabloları ve bu tablolara ait olan değerlerin tanım
 
 ```DESCRIBE [tabloadı];```
 
-###Tablo Silme
+###Tabloya Veri Ekleme
 
-Veritabanı içerisinde bulunan herhangi bir tablonun silinmesinde kullanılır.
+Veritabanı içerisinde bulunan herhangi bir tabloya veri girişine imkan tanır.
+
+```INSERT INTO [tabloadı] ([kolon], [birsonrakikolon]) VALUES ('[deger1]', [deger2]');```
+
+###Tabloya kolon Ekleme
+
+Veritabanı içerisinde bulunan ve seçtiğiniz tabloya kolon eklenilmesine imkan verir.
+
+```ALTER TABLE [tabloadı] ADD COLUMN [kolon] VARCHAR(120);```
+
+Veritabanı içerisinde benzersiz kimlikli ve otomatik artan kolonlar oluşturmanıza imkan tanır.
+
+```ALTER TABLE [table] ADD COLUMN [column] int NOT NULL AUTO_INCREMENT PRIMARY KEY;```
+
+#SQL İfadeleri
+
+###Tablodaki Kayıtları Gösterme
+
+Veritabanı içerisinde bulunan tablolar içerisindeki kayıtları ekrana getirir.
+
+```SELECT * FROM [tabloadı];```
+
+Veritabanında bulunan tablolar içerisinde ki kayıtları parça parça ekrana getirirmenize olanak sağlar
+
+```SELECT [kolon], [birsonrakikolon] FROM [tabloadı];```
+
+###Tablodaki Kayıtların Sayısını Gösterme
+
+Tablo içerisinde belirtilen kolona ait kaç adet kayıt olduğunu gösterir
+
+```SELECT COUNT([kolon]) FROM [tabloadı];```
+
+###Tablodaki Kayıtları Sayma ve gruplandırılmış kayıtları seçme
+
+Kayıtları sayar ve gruplandırılmış bir şekilde kayıtları gösterir.
+
+```SELECT *, (SELECT COUNT([kolon]) FROM [tabloadı]) AS count FROM [tabloadı] GROUP BY [kolon];```
+
+###İçeren kayıtları getir
+
+```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '%[deger]%';```
+
+### [deger] ile başlayanları getir
+
+```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '[deger]%';```
+
+### deg ile başlayan ve er ile bitenleri getir
+
+```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '[deg_er]';```
+
+###Bir Aralık Seçme
+
+```SELECT * FROM [tabloadı] WHERE [kolon] BETWEEN [deger1] and [deger2];```
+
+###Özel Sırayla ve Limitli Bir Şekilde Seçim
+
+```SELECT * FROM [tabloadı] WHERE [kolon] ORDER BY [kolon] ASC LIMIT [deger];```
+
+###Kayıt Güncelleme
+
+```UPDATE [tabloadı] SET [kolon] = '[guncellenencek-deger]' WHERE [kolon] = [deger];```
+
+###Kayıt Silme
+
+```DELETE FROM [tabloadı] WHERE [kolon] = [deger];```
+
+###Tablonun kolonunu silme
+
+```ALTER TABLE [tabloadı] DROP COLUMN [kolon];```
+
+###Tablo silme
 
 ```DROP TABLE [tabloadı];```
+
+###Veritabanı Silme
+
+```DROP DATABASE [veritabanıadı];```
+
+###Özel Kolon isimleri tanımlama
+
+```SELECT [kolon] AS [özel-kolon-adı] FROM [tabloadı];```
+
+##Veritabanının Yedeğini Alma
+
+```mysqldump -u [kullanıcıadı] -p [veritabanıadı] > yedekadi.sql```
+
+##Veritabanının Yedeğini Yükleme
+
+```mysql -u [kullanıcıadı] -p -h localhost [veritabanıadı] < yedekadi.sql```
+
+##Oturumdan çıkış
+
+```exit;```
