@@ -34,8 +34,6 @@
 
 <hr>
 
-
-
 MySQL Komutlarına Giriş
 ========
 
