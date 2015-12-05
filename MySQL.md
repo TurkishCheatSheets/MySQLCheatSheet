@@ -9,6 +9,12 @@ Local sunucuda kurulu olan MySQL komut satırı aracılığı ile bağlanabilmek
 
 ```mysql -u root -h 127.0.0.1```
 
+###Mevcut Veritabanlarını Listeleme
+
+Aşağıdaki komut aracılığı ile veritabanındaki mevcut veritabalarını listeleyebilirsiniz.
+
+```SHOW DATABASES;```
+
 ###Veritabanı Oluşturma
 
 Aşağıdaki komut aracılığı ile istediğiniz bir isim ile veritabanı oluşturabilirsiniz.
