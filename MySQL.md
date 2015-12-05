@@ -30,7 +30,6 @@
     * [Özel Kolon isimleri tanımlama](#Özel-kolon-isimleri-tanımlama)
     * [Veritabanının Yedeğini Alma](#veritabanının-yedeğini-alma)
     * [Veritabanının Yedeğini Yükleme](#veritabanının-yedeğini-yükleme)
-    * [Oturumdan çıkış](#oturumdan-çıkış)
   * [Matematiksel Fonksiyonlar](#matematiksel-fonksiyonlar)
     * [Yineleme Olmadan Seçim](#yineleme-olmadan-seçim)
     * [Kayıtların Toplam Sayısını Hesaplama](#kayıtların-toplam-sayısını-hesaplama)
@@ -187,10 +186,6 @@ Kayıtları sayar ve gruplandırılmış bir şekilde kayıtları gösterir.
 ##Veritabanının Yedeğini Yükleme
 
 ```mysql -u [kullanıcıadı] -p -h localhost [veritabanıadı] < yedekadi.sql```
-
-##Oturumdan çıkış
-
-```exit;```
 
 #Matematiksel Fonksiyonlar
 
