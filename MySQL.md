@@ -51,55 +51,55 @@ MySQL tarafında kullanılan temel SQL komutlarını baz alınarak oluşturulmu�
 
 <hr>
 
-#Veritabanı ile bağlantı kurma
+# Veritabanı ile bağlantı kurma
 
 Local sunucuda kurulu olan MySQL komut satırı aracılığı ile bağlanabilmek için aşağıdaki komutu kullanmanız yeterlidir.
 
 ```mysql -u root -h 127.0.0.1```
 
-##Mevcut Veritabanlarını Listeleme
+##  Mevcut Veritabanlarını Listeleme
 
 Aşağıdaki komut aracılığı ile veritabanındaki mevcut veritabalarını listeleyebilirsiniz.
 
 ```SHOW DATABASES;```
 
-##Veritabanı Oluşturma
+## Veritabanı Oluşturma
 
 Aşağıdaki komut aracılığı ile istediğiniz bir isim ile veritabanı oluşturabilirsiniz.
 
 ```CREATE DATABASE [veritabanıadı];```
 
-##Oluşturulan Veritabanını Kullanma
+## Oluşturulan Veritabanını Kullanma
 
 Aşağıdaki komut aracılığı ile oluşturulan veritabanı içerisinde istediğiniz komutları kullanma imkanı tanınır.
 
 ```USE [veritabanıadı];```
 
-##Tablo Oluşturma
+## Tablo Oluşturma
 
 Aşağıdaki komutu kullanarak veritabanı içerisinde tablo oluşturabilirsiniz.
 
 ``` CREATE TABLE [tabloadı] ([kolon] VARCHAR(120), [birsonrakikolon] DATETIME);```
 
-##Tabloları Gösterme
+## Tabloları Gösterme
 
 Veritabanı içerisinde oluştruduğunuz veya varolan tabloları göstermeye yarar.
 
 ```SHOW TABLES;```
 
-##Tablo Detaylandırma
+## Tablo Detaylandırma
 
 Veritabanı içerisindeki tabloları ve bu tablolara ait olan değerlerin tanımlamalarını göstermektedir.
 
 ```DESCRIBE [tabloadı];```
 
-##Tabloya Veri Ekleme
+## Tabloya Veri Ekleme
 
 Veritabanı içerisinde bulunan herhangi bir tabloya veri girişine imkan tanır.
 
 ```INSERT INTO [tabloadı] ([kolon], [birsonrakikolon]) VALUES ('[deger1]', [deger2]');```
 
-##Tabloya kolon Ekleme
+## Tabloya kolon Ekleme
 
 Veritabanı içerisinde bulunan ve seçtiğiniz tabloya kolon eklenilmesine imkan verir.
 
@@ -109,11 +109,11 @@ Veritabanı içerisinde benzersiz kimlikli ve otomatik artan kolonlar oluşturma
 
 ```ALTER TABLE [table] ADD COLUMN [column] int NOT NULL AUTO_INCREMENT PRIMARY KEY;```
 
-#SQL İfadeleri
+# SQL İfadeleri
 
 <hr>
 
-##Tablodaki Kayıtları Gösterme
+## Tablodaki Kayıtları Gösterme
 
 Veritabanı içerisinde bulunan tablolar içerisindeki kayıtları ekrana getirir.
 
@@ -123,99 +123,99 @@ Veritabanında bulunan tablolar içerisinde ki kayıtları parça parça ekrana 
 
 ```SELECT [kolon], [birsonrakikolon] FROM [tabloadı];```
 
-##Tablodaki Kayıtların Sayısını Gösterme
+## Tablodaki Kayıtların Sayısını Gösterme
 
 Tablo içerisinde belirtilen kolona ait kaç adet kayıt olduğunu gösterir
 
 ```SELECT COUNT([kolon]) FROM [tabloadı];```
 
-##Tablodaki Kayıtları Sayma ve gruplandırılmış kayıtları seçme
+## Tablodaki Kayıtları Sayma ve gruplandırılmış kayıtları seçme
 
 Kayıtları sayar ve gruplandırılmış bir şekilde kayıtları gösterir.
 
 ```SELECT *, (SELECT COUNT([kolon]) FROM [tabloadı]) AS count FROM [tabloadı] GROUP BY [kolon];```
 
-##İçeren kayıtları getir
+## İçeren kayıtları getir
 
 ```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '%[deger]%';```
 
-##[deger] ile başlayanları getir
+## [deger] ile başlayanları getir
 
 ```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '[deger]%';```
 
-##deg ile başlayan ve er ile bitenleri getir
+## deg ile başlayan ve er ile bitenleri getir
 
 ```SELECT * FROM [tabloadı] WHERE [kolon] LIKE '[deg_er]';```
 
-##Bir Aralık Seçme
+## Bir Aralık Seçme
 
 ```SELECT * FROM [tabloadı] WHERE [kolon] BETWEEN [deger1] and [deger2];```
 
-##Özel Sırayla ve Limitli Bir Şekilde Seçim
+## Özel Sırayla ve Limitli Bir Şekilde Seçim
 
 ```SELECT * FROM [tabloadı] WHERE [kolon] ORDER BY [kolon] ASC LIMIT [deger];```
 
-##Kayıt Güncelleme
+## Kayıt Güncelleme
 
 ```UPDATE [tabloadı] SET [kolon] = '[guncellenencek-deger]' WHERE [kolon] = [deger];```
 
-##Kayıt Silme
+## Kayıt Silme
 
 ```DELETE FROM [tabloadı] WHERE [kolon] = [deger];```
 
-##Tablonun kolonunu silme
+## Tablonun kolonunu silme
 
 ```ALTER TABLE [tabloadı] DROP COLUMN [kolon];```
 
-##Tablo silme
+## Tablo silme
 
 ```DROP TABLE [tabloadı];```
 
-##Veritabanı Silme
+## Veritabanı Silme
 
 ```DROP DATABASE [veritabanıadı];```
 
-##Özel Kolon isimleri tanımlama
+## Özel Kolon isimleri tanımlama
 
 ```SELECT [kolon] AS [özel-kolon-adı] FROM [tabloadı];```
 
-##Veritabanının Yedeğini Alma
+## Veritabanının Yedeğini Alma
 
 ```mysqldump -u [kullanıcıadı] -p [veritabanıadı] > yedekadi.sql```
 
-##Veritabanının Yedeğini Yükleme
+## Veritabanının Yedeğini Yükleme
 
 ```mysql -u [kullanıcıadı] -p -h localhost [veritabanıadı] < yedekadi.sql```
 
-#Matematiksel Fonksiyonlar
+# Matematiksel Fonksiyonlar
 
 <hr>
 
-##Yineleme Olmadan Seçim
+## Yineleme Olmadan Seçim
 
 ```SELECT distinct name, email, acception FROM owners WHERE acception = 1 AND date >= 2015-01-01 00:00:00```
 
-##Kayıtların Toplam Sayısını Hesaplama
+## Kayıtların Toplam Sayısını Hesaplama
 
 ```SELECT SUM([kolon]) FROM [tabloadı];```
 
-##Toplam [sütun] sayısını alma ve grublama [ara kolonlu]
+## Toplam [sütun] sayısını alma ve grublama [ara kolonlu]
 
 ```SELECT [arakolon], SUM([kolon]) FROM [tablo] GROUP BY [arakolon];```
 
-##Kolondaki en büyük değer
+## Kolondaki en büyük değer
 
 ```SELECT MAX([kolon]) FROM [tabloadı];```
 
-##Kolondaki en küçük değer
+## Kolondaki en küçük değer
 
 ```SELECT MIN([kolon]) FROM [tabloadı];```
 
-##Kolon Ortalaması
+## Kolon Ortalaması
 
 ```SELECT AVG([kolon]) FROM [tabloadı];```
 
-##Yuvarlanmış ortalama değer ile gruplama
+## Yuvarlanmış ortalama değer ile gruplama
 
 ```SELECT [carakolon], ROUND(AVG([kolon]), 2) FROM [tabloadı] GROUP BY [arakolon];```
 
@@ -223,11 +223,11 @@ Kayıtları sayar ve gruplandırılmış bir şekilde kayıtları gösterir.
 
 <hr>
 
-##Kullanıcı Oluşturma
+## Kullanıcı Oluşturma
 
 ```CREATE USER 'kullanıcı_adı'@'localhost' IDENTIFIED BY 'şifresi';```
 
-##Kullanıcı Yetkilendirme
+## Kullanıcı Yetkilendirme
 
 ```GRANT ALL PRIVILEGES ON * . * TO 'kullanıcı_adi'@'localhost';```
 
